@@ -14,5 +14,16 @@ a {
 
 h1 {
   text-align: center;
-  color: blue;
+  color: lightblue;
+}
+
+label + input {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.861);
+  
 }

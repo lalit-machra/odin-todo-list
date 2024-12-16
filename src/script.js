@@ -1,10 +1,15 @@
-import "./style.css"
+import "./style.css";
 
-class projectGenerator {
-  constructor(name) {
-    this.name = name;
-  }
+
+export const projects = [];
+export const todos = {};
+
+
+function addToProjects(project) {
+  projects.push(project);
+  console.log(projects);
 }
+
 
 class todoItemGenerator {
   constructor(description, category, dueTime, dueDate, priority, project) {
@@ -18,5 +23,14 @@ class todoItemGenerator {
   }
 }
 
-const todo2 = new todoItemGenerator("Wash clothes", "Home","10:00AM", "25/10/2024", "2");
-console.log(todo2);
+
+function addToTodos(todo) {
+  if (todos[todo["project"]] == undefined) {
+    todos[todo["project"]] = [];
+  }
+  todos[todo["project"]].push(todo);
+  console.log(todos);
+}
+
+
+export { addToProjects, todoItemGenerator, addToTodos };
