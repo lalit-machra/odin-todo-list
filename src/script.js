@@ -1,6 +1,3 @@
-import "./style.css";
-
-
 export const projects = [];
 export const todos = {};
 
@@ -11,7 +8,7 @@ function addToProjects(project) {
 }
 
 
-class todoItemGenerator {
+class todoGenerator {
   constructor(description, category, dueTime, dueDate, priority, project) {
     this.description = description;
     this.category = category
@@ -25,12 +22,13 @@ class todoItemGenerator {
 
 
 function addToTodos(todo) {
-  if (todos[todo["project"]] == undefined) {
-    todos[todo["project"]] = [];
+  for (let i = 0; i < todo["project"].length; i++) {
+    if (todos[todo["project"][i]] == undefined) {
+      todos[todo["project"][i]] = [];
+    }
+    todos[todo["project"][i]].push(todo);
   }
-  todos[todo["project"]].push(todo);
-  console.log(todos);
 }
 
 
-export { addToProjects, todoItemGenerator, addToTodos };
+export { addToProjects, todoGenerator, addToTodos };

@@ -15,12 +15,33 @@
         <label for="project-name">Project Name</label>
         <input id="project-name" autofocus autocomplete="off">
         <button class="submitBtn" type="submit" formmethod="dialog">Submit</button>
-        </form>
+      </form>
       <button class="closeBtn">Close</button>
     </dialog>
 
-    <main class="projects">
+    <section class="projects">
 
-    </main>
+    </section>
+
+    <dialog class="newTodoDialog">
+      <form class="todoForm">
+        <label for="description">Description</label>
+        <input id="description" type="text" name="description">
+        <label for="category">Category</label>
+        <input id="category" type="text" name="category">
+        <label for="dueTime">Due Time</label>
+        <input id="dueTime" type="time" name="dueTime">
+        <label for="dueDate">Due Date</label>
+        <input id="dueDate" type="date" name="dueDate">
+        <label for="priority">Priority</label>
+        <input id="priority" type="number" name="priority">
+        <label>Project</label>
+        <div class="projectCheckbox">
+          
+        </div>
+        <button class="submitBtn" type="submit" formmethod="dialog">Submit</button> 
+      </form>
+      <button class="closeBtn">Close</button>
+    </dialog>
   </body>
 </html>

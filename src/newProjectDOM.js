@@ -1,13 +1,13 @@
 // Handle creating new projects
-import { projects, addToProjects } from "./script.js";
+import { projects, addToProjects } from "./central.js";
 
 const addNewProject = document.querySelector(".newProjBtn");
-const newProjectDialog = document.querySelector("dialog");
-const submitBtn = document.querySelector(".submitBtn")
+const newProjectDialog = document.querySelector("dialog.newProjDialog");
+const submitBtn = document.querySelector(".newProjDialog .submitBtn")
 const closeBtn = document.querySelector(".closeBtn");
 const input = document.querySelector("input#project-name");
 const projectSection = document.querySelector(".projects");
-let h1, newTodoBtn;
+let div, h1, newTodoBtn;
 
 addNewProject.addEventListener("click", () => {
   newProjectDialog.showModal();
@@ -17,19 +17,22 @@ addNewProject.addEventListener("click", () => {
 submitBtn.addEventListener("click", () => {
   const projectName = input.value;
   addToProjects(projectName);
+  // Display the projects
   projectSection.innerHTML = "";
   for (let i = 0; i < projects.length; i++) {
+    div = document.createElement("div");
+    div.classList.add(`project${i + 1}`);
+    projectSection.appendChild(div);
     h1 = document.createElement("h2");
     h1.innerText = projects[i];
     newTodoBtn = document.createElement("button");
     newTodoBtn.innerText = "New Todo";
-    projectSection.appendChild(h1);
-    projectSection.appendChild(newTodoBtn);
+    newTodoBtn.classList.add("newTodoBtn");
+    div.appendChild(h1);
+    div.appendChild(newTodoBtn);
   }
 });
 
 closeBtn.addEventListener("click", () => {
   newProjectDialog.close();
 });
-
-// Display the projects
