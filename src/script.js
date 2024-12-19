@@ -4,7 +4,6 @@ export const todos = {};
 
 function addToProjects(project) {
   projects.push(project);
-  console.log(projects);
 }
 
 

@@ -7,9 +7,20 @@
     <title>Todo List</title>
   </head>
   <body>
-    <h1>Todo List</h1>
-    <button class="newProjBtn">Add new project</button>
-    
+    <div class="content">
+      <h1>Todo List</h1>
+
+      <section class="sidebar">
+        <button class="newProjBtn">Add new project</button>
+        <h2>Your Projects</h2>
+        <div class="allProjects"></div>
+      </section>
+
+      <section class="projects">
+      
+      </section>
+    </div>
+
     <dialog class="newProjDialog">
       <form>
         <label for="project-name">Project Name</label>
@@ -18,10 +29,6 @@
       </form>
       <button class="closeBtn">Close</button>
     </dialog>
-
-    <section class="projects">
-
-    </section>
 
     <dialog class="newTodoDialog">
       <form class="todoForm">
