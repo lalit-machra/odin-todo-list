@@ -19,24 +19,16 @@ h1 {
   border: 2px solid;
 }
 
-label + input {
-  display: block;
-  margin-top: 5px;
-  margin-bottom: 20px;
+.projectCheckbox input {
+  display: inline-block;
 }
 
 body {
-  background-color: lightblue;
-  background-image: url("../images/background.jpg");
-  
+  background-color: rgba(243, 243, 240, 0);
 }
 
 input[type="radio"] {
   display: inline-block;
-}
-
-div[class="todo"] {
-  border: 2px solid green;
 }
 
 p[class="todoData"] {
@@ -45,6 +37,11 @@ p[class="todoData"] {
   margin-right: 5px; 
 }
 
+div.buttons {
+  margin-top: 10px;
+}
+
+/* Style the buttons */
 .newProjBtn {
   width: 130px;
   height: 35px;
@@ -72,6 +69,7 @@ p[class="todoData"] {
   opacity: 0.7;
 }
 
+/* Position different sections of the webpage */
 .content {
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -87,4 +85,67 @@ p[class="todoData"] {
 .projects {
   padding: 10px;
   border: 2px solid;
+}
+
+/* Style the dialog box */
+dialog {
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.127);
+  border: none;
+}
+
+dialog::backdrop {
+  background-color: rgb(243, 243, 240);
+  opacity: 0.5;
+}
+
+dialog input {
+  display: block;
+  margin-bottom: 20px;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  border-bottom: 2px solid;
+  background-color: rgba(255, 255, 255, 0.908);
+}
+
+input:focus {
+  border: 2px solid;
+  outline: none;
+}
+
+/* Style the todos */
+.todo {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.todo h3 {
+  display: inline-block;
+  grid-column: 2 / 3;
+}
+
+.todo .category {
+  grid-column: 3 / 4;
+}
+
+.todo .dueDate {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.todo .dueTime {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.todo .deleteTodo {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.todo .priority {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
 }
