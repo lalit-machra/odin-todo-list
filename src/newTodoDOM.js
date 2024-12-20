@@ -13,8 +13,9 @@ let newTodoBtn;
 projSubmitBtn.addEventListener("click", () => {
   projectCheckbox.innerHTML = "";
   newTodoBtn = document.querySelectorAll(".projects .newTodoBtn");
-  let input, label;
+  let input, label, checkboxDiv;
   for (let i = 0; i < projects.length; i++) {
+    checkboxDiv = document.createElement("div");
     input = document.createElement("input");
     input.setAttribute("type", "checkbox");
     input.setAttribute("id", `project${i}`);
@@ -23,8 +24,9 @@ projSubmitBtn.addEventListener("click", () => {
     label = document.createElement("label");
     label.innerText = projects[i];
     label.setAttribute("for", `project${i}`);
-    projectCheckbox.appendChild(input);
-    projectCheckbox.appendChild(label);
+    checkboxDiv.appendChild(input);
+    checkboxDiv.appendChild(label);
+    projectCheckbox.appendChild(checkboxDiv);
   }
 
   newTodoBtn.forEach((button) => {
@@ -63,10 +65,19 @@ todoSubmitBtn.addEventListener("click", () => {
   dueDate = formData.get("dueDate");
   priority = formData.get("priority");
   project = formData.getAll("projectName");
-  let todo = new todoGenerator(description, category, dueTime, dueDate, priority, project);
-  addToTodos(todo);
-  // Display todos
-  displayTodos();
+  
+  if (description != undefined && description != "" &&
+      category != undefined && category != "" &&
+      dueTime != undefined && category != "" &&
+      dueDate != undefined && dueDate != "" &&
+      priority != undefined && priority != "" &&
+      project != undefined && project != ""
+  ) {
+    let todo = new todoGenerator(description, category, dueTime, dueDate, priority, project);
+    addToTodos(todo);
+    // Display todos
+    displayTodos();
+  }
 });
 
 
@@ -76,7 +87,7 @@ closeBtn.addEventListener("click", () => {
 });
 
 function displayTodos() {
-  let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, p4;
+  let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, p4, deleteTodo;
   for (let i = 0; i < projects.length; i++) {
     currProjTodosDiv = document.querySelector(`div.project${i + 1} .allTodos`);
     currProjTodosDiv.innerHTML = "";
@@ -91,16 +102,19 @@ function displayTodos() {
         h3.innerText = currTodo["description"];
         p1 = document.createElement("p");
         p1.innerText = currTodo["category"];
-        p1.classList.add("todoData");
+        p1.classList.add("category");
         p2 = document.createElement("p");
         p2.innerText = currTodo["dueTime"];
-        p2.classList.add("todoData");
+        p2.classList.add("dueTime");
         p3 = document.createElement("p");
         p3.innerText = currTodo["dueDate"];
-        p3.classList.add("todoData");
+        p3.classList.add("dueDate");
         p4 = document.createElement("p");
         p4.innerText = `Priority: ${currTodo["priority"]}`;
-        p4.classList.add("todoData");
+        p4.classList.add("priority");
+        deleteTodo = document.createElement("button");
+        deleteTodo.innerText = "Delete";
+        deleteTodo.classList.add("deleteTodo");
   
         div.appendChild(checkbox);
         div.appendChild(h3);
@@ -108,6 +122,7 @@ function displayTodos() {
         div.appendChild(p2);
         div.appendChild(p3);
         div.appendChild(p4);
+        div.appendChild(deleteTodo);
         currProjTodosDiv.appendChild(div);
       }
     }

@@ -23,32 +23,29 @@
 
     <dialog class="newProjDialog">
       <form>
-        <label for="project-name">Project Name</label>
-        <input id="project-name" autofocus autocomplete="off">
-        <button class="submitBtn" type="submit" formmethod="dialog">Submit</button>
+        <input id="project-name" autofocus autocomplete="off" placeholder="Project Name" required>
+        <div class="buttons">
+          <button class="submitBtn" type="submit" formmethod="dialog">Submit</button>
+          <button type="button" class="closeBtn">Close</button>
+        </div>
       </form>
-      <button class="closeBtn">Close</button>
     </dialog>
 
     <dialog class="newTodoDialog">
       <form class="todoForm">
-        <label for="description">Description</label>
-        <input id="description" type="text" name="description">
-        <label for="category">Category</label>
-        <input id="category" type="text" name="category">
-        <label for="dueTime">Due Time</label>
-        <input id="dueTime" type="time" name="dueTime">
-        <label for="dueDate">Due Date</label>
-        <input id="dueDate" type="date" name="dueDate">
-        <label for="priority">Priority</label>
-        <input id="priority" type="number" name="priority">
-        <label>Project</label>
+        <input id="description" type="text" name="description" placeholder="description" autocomplete="off" required>
+        <input id="category" type="text" name="category" placeholder="category" autocomplete="off" required>
+        <input id="dueTime" type="time" name="dueTime" required>
+        <input id="dueDate" type="date" name="dueDate" required>
+        <input id="priority" type="number" name="priority" placeholder="priority" autocomplete="off" required>
         <div class="projectCheckbox">
           
         </div>
-        <button class="submitBtn" type="submit" formmethod="dialog">Submit</button> 
+        <div class="buttons">
+          <button class="submitBtn" type="submit" formmethod="dialog">Submit</button> 
+          <button type="button" class="closeBtn">Close</button>
+        </div>
       </form>
-      <button class="closeBtn">Close</button>
     </dialog>
   </body>
 </html>
