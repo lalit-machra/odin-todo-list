@@ -1,4 +1,4 @@
-import { projects, todos, todoGenerator, addToTodos, assignPriorityClass } from "./central.js"
+import { projects, todos, todoGenerator, addToTodos, assignPriorityClass, rearrangeTodos } from "./central.js"
 
 
 const newTodoDialog = document.querySelector("dialog.newTodoDialog");
@@ -75,6 +75,10 @@ todoSubmitBtn.addEventListener("click", () => {
   ) {
     let todo = new todoGenerator(description, category, dueTime, dueDate, priority, project);
     addToTodos(todo);
+    // Rearrange todos according to priority
+    for (let i = 0; i < project.length; i++) {
+      rearrangeTodos(project[i]);
+    }
     // Display todos
     displayTodos();
   }

@@ -18,7 +18,21 @@ export function assignPriorityClass(todoDiv, priority) {
   }
 }
 
-
-function rearrangeTodos() {
-  
+// Sort in order of decreasing priority
+export function rearrangeTodos(reqProject) {
+  let currProj, prevPriority, currPriority, smallest, dummy;
+  currProj = todos[reqProject];
+  for (let j = 0; j < currProj.length - 1; j++) {
+    prevPriority = currProj[j]["priority"];
+    smallest = j;
+    for (let k = j + 1; k < currProj.length; k++) {
+      currPriority = currProj[k]["priority"];
+      if (currPriority < currProj[smallest]["priority"]) {
+        smallest = k;
+      }
+    }
+    dummy = currProj[j];
+    currProj[j] = currProj[smallest];
+    currProj[smallest] = dummy;
+  }
 }
