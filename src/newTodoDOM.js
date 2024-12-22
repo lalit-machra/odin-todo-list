@@ -1,4 +1,4 @@
-import { projects, todos, todoGenerator, addToTodos } from "./central.js"
+import { projects, todos, todoGenerator, addToTodos, assignPriorityClass } from "./central.js"
 
 
 const newTodoDialog = document.querySelector("dialog.newTodoDialog");
@@ -87,7 +87,7 @@ closeBtn.addEventListener("click", () => {
 });
 
 function displayTodos() {
-  let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, p4, deleteTodo;
+  let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, deleteTodo;
   for (let i = 0; i < projects.length; i++) {
     currProjTodosDiv = document.querySelector(`div.project${i + 1} .allTodos`);
     currProjTodosDiv.innerHTML = "";
@@ -109,19 +109,17 @@ function displayTodos() {
         p3 = document.createElement("p");
         p3.innerText = currTodo["dueDate"];
         p3.classList.add("dueDate");
-        p4 = document.createElement("p");
-        p4.innerText = `Priority: ${currTodo["priority"]}`;
-        p4.classList.add("priority");
         deleteTodo = document.createElement("button");
         deleteTodo.innerText = "Delete";
         deleteTodo.classList.add("deleteTodo");
+        /* Add required class according to priority for styling */
+        assignPriorityClass(div, currTodo["priority"]);
   
         div.appendChild(checkbox);
         div.appendChild(h3);
         div.appendChild(p1);
         div.appendChild(p2);
         div.appendChild(p3);
-        div.appendChild(p4);
         div.appendChild(deleteTodo);
         currProjTodosDiv.appendChild(div);
       }

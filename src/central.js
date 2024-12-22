@@ -3,3 +3,4 @@ export { projects, addToProjects, todos, todoGenerator, addToTodos } from "./scr
 export * from "./newProjectDOM.js";
 export * from "./newTodoDOM.js";
 export * from "./sidebar.js";
+export * from "./priority.js";
