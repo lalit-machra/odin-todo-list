@@ -32,7 +32,7 @@ closeBtn.addEventListener("click", () => {
 
 
 export function displayProjects() {
-  let div, h2, newTodoBtn, todosDiv;
+  let div, h2, newTodoBtn, todosDiv, collapseBtn, projectHead, projectContent, currProjContent;
   const projectSection = document.querySelector(".projects");
   projectSection.innerHTML = "";
   const newTodoDialog = document.querySelector("dialog.newTodoDialog");
@@ -40,10 +40,31 @@ export function displayProjects() {
     div = document.createElement("div");
     div.classList.add(`project${i + 1}`);
     projectSection.appendChild(div);
+
+    projectHead = document.createElement("div");
+    projectHead.classList.add("projectHead");
+
     h2 = document.createElement("h2");
     h2.innerText = projects[i];
+
+    collapseBtn = document.createElement("button");
+    collapseBtn.classList.add("collapseBtn");
+    collapseBtn.innerText = "~"
+    collapseBtn.addEventListener("click", (e) => {
+      currProjContent = document.querySelector(`.${e.target.parentNode.parentNode.classList[0]} .projectContent`);
+      currProjContent.classList.toggle("collapsed");
+    });
+
+    div.appendChild(projectHead);
+    projectHead.appendChild(h2);
+    projectHead.appendChild(collapseBtn);
+
+    projectContent = document.createElement("div");
+    projectContent.classList.add("projectContent");
+
     todosDiv = document.createElement("div");
     todosDiv.classList.add("allTodos");
+
     newTodoBtn = document.createElement("button");
     newTodoBtn.innerText = "+ New Todo";
     newTodoBtn.classList.add("newTodoBtn");
@@ -51,8 +72,9 @@ export function displayProjects() {
     newTodoBtn.addEventListener("click", () => {
       newTodoDialog.showModal();
     });
-    div.appendChild(h2);
-    div.appendChild(todosDiv);
-    div.appendChild(newTodoBtn);
+
+    div.appendChild(projectContent);
+    projectContent.appendChild(todosDiv);
+    projectContent.appendChild(newTodoBtn);
   }
 }

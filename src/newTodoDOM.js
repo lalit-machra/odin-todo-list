@@ -57,7 +57,6 @@ closeBtn.addEventListener("click", () => {
 
 export function displayTodos() {
   let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, deleteTodo;
-  console.log(todos);
   for (let i = 0; i < projects.length; i++) {
     currProjTodosDiv = document.querySelector(`div.project${i + 1} .allTodos`);
     currProjTodosDiv.innerHTML = "";

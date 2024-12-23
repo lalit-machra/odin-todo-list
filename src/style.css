@@ -192,10 +192,25 @@ input:focus {
   background-color: green;
 }
 
-
 /* Design the overall positioning of all the todos */
 .projects .allTodos {
   display: flex;
   flex-direction: row;
   gap: 10px;
+}
+
+/* Collapse Button styling*/
+.projects .projectHead h2 {
+  display: inline-block;
+}
+
+.projectHead .collapseBtn {
+  margin-left: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgb(244, 242, 242);
+}
+
+.projectContent.collapsed {
+  display: none;
 }
