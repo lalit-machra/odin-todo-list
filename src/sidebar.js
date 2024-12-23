@@ -1,9 +1,12 @@
 import { projects } from "./central.js";
 
 const projSubmitBtn = document.querySelector(".newProjDialog .submitBtn");
-const allProjectsDiv = document.querySelector(".sidebar .allProjects");
-
 projSubmitBtn.addEventListener("click", () => {
+  loadSidebar();
+});
+
+export function loadSidebar() {
+  const allProjectsDiv = document.querySelector(".sidebar .allProjects");
   allProjectsDiv.innerHTML = "";
   let p;
   for (let i = 0; i < projects.length; i++) {
@@ -11,4 +14,4 @@ projSubmitBtn.addEventListener("click", () => {
     p.innerText = projects[i];
     allProjectsDiv.appendChild(p);
   }
-});
+}

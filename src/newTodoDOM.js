@@ -1,53 +1,14 @@
-import { projects, todos, todoGenerator, addToTodos, assignPriorityClass, rearrangeTodos } from "./central.js"
+import { projects, todos, todoGenerator, addToTodos, assignPriorityClass, rearrangeTodos, addToStorage } from "./central.js"
 
 
 const newTodoDialog = document.querySelector("dialog.newTodoDialog");
-const projectCheckbox = document.querySelector(".projectCheckbox");
 const projSubmitBtn = document.querySelector(".newProjDialog .submitBtn");
 
 
-let newTodoBtn;
-
-
-// In the dialog for adding a new todo, generate checkboxes for every project
 projSubmitBtn.addEventListener("click", () => {
-  projectCheckbox.innerHTML = "";
-  newTodoBtn = document.querySelectorAll(".projects .newTodoBtn");
-  let input, label, checkboxDiv;
-  for (let i = 0; i < projects.length; i++) {
-    checkboxDiv = document.createElement("div");
-    input = document.createElement("input");
-    input.setAttribute("type", "checkbox");
-    input.setAttribute("id", `project${i}`);
-    input.setAttribute("name", "projectName");
-    input.setAttribute("value", projects[i]);
-    label = document.createElement("label");
-    label.innerText = projects[i];
-    label.setAttribute("for", `project${i}`);
-    checkboxDiv.appendChild(input);
-    checkboxDiv.appendChild(label);
-    projectCheckbox.appendChild(checkboxDiv);
-  }
-
-  newTodoBtn.forEach((button) => {
-    button.addEventListener("click", () => {
-      newTodoDialog.showModal();
-    });
-  });
-
+  generateCheckboxes();
   // After fetching the projects, load their todos as well
   displayTodos();
-});
-
-
-// When the page first loads, make sure everything is working fine then also
-window.addEventListener("load", () => {
-  let event = new Event("click", {
-    bubbles: true,
-  });
-  const input = document.querySelector("input#project-name");
-  input.value = "Starter Project";
-  projSubmitBtn.dispatchEvent(event);
 });
 
 
@@ -79,6 +40,9 @@ todoSubmitBtn.addEventListener("click", () => {
     for (let i = 0; i < project.length; i++) {
       rearrangeTodos(project[i]);
     }
+    // Add to localStorage
+    addToStorage(todos);
+
     // Display todos
     displayTodos();
   }
@@ -90,7 +54,8 @@ closeBtn.addEventListener("click", () => {
   newTodoDialog.close();
 });
 
-function displayTodos() {
+
+export function displayTodos() {
   let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, deleteTodo;
   for (let i = 0; i < projects.length; i++) {
     currProjTodosDiv = document.querySelector(`div.project${i + 1} .allTodos`);
@@ -128,5 +93,27 @@ function displayTodos() {
         currProjTodosDiv.appendChild(div);
       }
     }
+  }
+}
+
+
+// In the dialog for adding a new todo, generate checkboxes for every project
+export function generateCheckboxes() {
+  const projectCheckbox = document.querySelector(".projectCheckbox");
+  projectCheckbox.innerHTML = "";
+  let input, label, checkboxDiv;
+  for (let i = 0; i < projects.length; i++) {
+    checkboxDiv = document.createElement("div");
+    input = document.createElement("input");
+    input.setAttribute("type", "checkbox");
+    input.setAttribute("id", `project${i}`);
+    input.setAttribute("name", "projectName");
+    input.setAttribute("value", projects[i]);
+    label = document.createElement("label");
+    label.innerText = projects[i];
+    label.setAttribute("for", `project${i}`);
+    checkboxDiv.appendChild(input);
+    checkboxDiv.appendChild(label);
+    projectCheckbox.appendChild(checkboxDiv);
   }
 }

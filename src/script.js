@@ -2,6 +2,20 @@ export const projects = [];
 export const todos = {};
 
 
+export function assignToProjects(data) {
+  for (let i = 0; i < data.length; i++) {
+    projects.push(data[i]);
+  }
+}
+
+
+export function assignToTodos(data) {
+  for (let key in data) {
+    todos[key] = data[key];
+  }
+}
+
+
 function addToProjects(project) {
   projects.push(project);
 }
