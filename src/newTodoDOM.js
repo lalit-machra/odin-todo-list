@@ -57,6 +57,7 @@ closeBtn.addEventListener("click", () => {
 
 export function displayTodos() {
   let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, deleteTodo;
+  console.log(todos);
   for (let i = 0; i < projects.length; i++) {
     currProjTodosDiv = document.querySelector(`div.project${i + 1} .allTodos`);
     currProjTodosDiv.innerHTML = "";
@@ -81,6 +82,18 @@ export function displayTodos() {
         deleteTodo = document.createElement("button");
         deleteTodo.innerText = "Delete";
         deleteTodo.classList.add("deleteTodo");
+        // Delete a todo
+        deleteTodo.addEventListener("click", (e) => {
+          if (todos[projects[i]].length > 1) {
+            todos[projects[i]].splice(j, 1);
+          }
+          else {
+            // Remove the entire project from todo list
+            delete todos[projects[i]];
+          }
+          e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+          addToStorage(todos);
+        });
         /* Add required class according to priority for styling */
         assignPriorityClass(div, currTodo["priority"]);
   
