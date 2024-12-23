@@ -178,15 +178,15 @@ div.todo.checked {
 
 /* Apply styles to todos according to their priority */
 .todo.priority1 {
-  background-color: red;
+  background-color: lightseagreen;
 }
  
 .todo.priority2 {
-  background-color: orange;
+  background-color: lightskyblue;
 }
  
 .todo.priority3 {
-  background-color: yellow;
+  background-color: rgba(255, 255, 0, 0.778);
 }
  
 .todo.priority4 {
@@ -194,7 +194,7 @@ div.todo.checked {
 }
 
 .todo.priority5 {
-  background-color: green;
+  background-color: lightgreen;
 }
 
 /* Design the overall positioning of all the todos */
@@ -218,4 +218,16 @@ div.todo.checked {
 
 .projectContent.collapsed {
   display: none;
+}
+
+/* Style the delete project button */
+.projectContent .deleteProjBtn {
+  display: block;
+  margin-top: 10px;
+  width: 140px;
+  height: 30px;
+  border: 1px solid;
+  border-radius: 8px;
+  background-color: red;
+  color: white;
 }

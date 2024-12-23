@@ -1,5 +1,5 @@
 // Handle creating new projects
-import { projects, addToProjects, addToStorage } from "./central.js";
+import { projects, addToProjects, todos, addToStorage } from "./central.js";
 
 
 const addNewProject = document.querySelector(".newProjBtn");
@@ -32,7 +32,7 @@ closeBtn.addEventListener("click", () => {
 
 
 export function displayProjects() {
-  let div, h2, newTodoBtn, todosDiv, collapseBtn, projectHead, projectContent, currProjContent;
+  let div, h2, newTodoBtn, todosDiv, collapseBtn, projectHead, projectContent, currProjContent, projDeleteBtn;
   const projectSection = document.querySelector(".projects");
   projectSection.innerHTML = "";
   const newTodoDialog = document.querySelector("dialog.newTodoDialog");
@@ -73,8 +73,23 @@ export function displayProjects() {
       newTodoDialog.showModal();
     });
 
+    projDeleteBtn = document.createElement("button");
+    projDeleteBtn.classList.add("deleteProjBtn");
+    projDeleteBtn.innerText = "DELETE PROJECT";
+    projDeleteBtn.addEventListener("click", (e) => {
+      // Delete associated todos
+      delete todos[projects[i]];
+      addToStorage(todos);
+      // Delete from projects
+      projects.splice(i, 1);
+      addToStorage(projects);
+      // Remove from DOM
+      projectSection.removeChild(e.target.parentNode.parentNode);
+    });
+
     div.appendChild(projectContent);
     projectContent.appendChild(todosDiv);
     projectContent.appendChild(newTodoBtn);
+    projectContent.appendChild(projDeleteBtn);
   }
 }
