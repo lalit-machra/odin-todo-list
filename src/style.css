@@ -171,6 +171,11 @@ input:focus {
   position: center;
 }
 
+div.todo.checked {
+  background-color: rgb(235, 231, 231);
+  opacity: 0.7;
+}
+
 /* Apply styles to todos according to their priority */
 .todo.priority1 {
   background-color: red;

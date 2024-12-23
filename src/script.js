@@ -35,12 +35,10 @@ class todoGenerator {
 
 
 function addToTodos(todo) {
-  for (let i = 0; i < todo["project"].length; i++) {
-    if (todos[todo["project"][i]] == undefined) {
-      todos[todo["project"][i]] = [];
-    }
-    todos[todo["project"][i]].push(todo);
+  if (todos[todo["project"]] == undefined) {
+    todos[todo["project"]] = [];
   }
+  todos[todo["project"]].push(todo);
 }
 
 
