@@ -16,7 +16,6 @@ h1 {
   text-align: center;
   /*color: blue;*/
   color: black;
-  border: 2px solid;
 }
 
 .projectCheckbox input {
@@ -73,8 +72,9 @@ div.buttons {
 /* Position different sections of the webpage */
 .content {
   display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr, 1fr;
+  grid-template-columns: 15vw 84vw;
+  grid-template-rows: 10vh auto;
+  overflow-x: hidden;
 }
 
 .sidebar {
