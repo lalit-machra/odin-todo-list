@@ -1,4 +1,13 @@
-import { projects, displayProjects, assignToProjects, todos, generateCheckboxes, displayTodos, assignToTodos, loadSidebar } from "./central.js";
+import {
+  projects,
+  displayProjects,
+  assignToProjects,
+  todos,
+  generateCheckboxes,
+  displayTodos,
+  assignToTodos,
+  loadSidebar,
+} from "./central.js";
 
 // When the window loads, check for existing resources or load new
 window.addEventListener("load", () => {
@@ -14,8 +23,7 @@ window.addEventListener("load", () => {
       assignToTodos(JSON.parse(storage["todos"]));
       displayTodos();
     }
-  }
-  else {
+  } else {
     // Stimulate clicking on the project submit button with the input value "Starter Project"
     let clickEvent = new Event("click");
     const input = document.querySelector("input#project-name");
@@ -24,13 +32,11 @@ window.addEventListener("load", () => {
   }
 });
 
-
 function addToStorage(data) {
   let storage = window.localStorage;
   if (data === projects) {
     storage["projects"] = JSON.stringify(data);
-  }
-  else if (data === todos) {
+  } else if (data === todos) {
     storage["todos"] = JSON.stringify(data);
   }
 }
