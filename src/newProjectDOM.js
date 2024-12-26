@@ -1,5 +1,5 @@
 // Handle creating new projects
-import { projects, addToProjects, todos, addToStorage } from "./central.js";
+import { projects, addToProjects, todos, addToStorage, loadSidebar } from "./central.js";
 
 
 const addNewProject = document.querySelector(".newProjBtn");
@@ -85,6 +85,7 @@ export function displayProjects() {
       addToStorage(projects);
       // Remove from DOM
       projectSection.removeChild(e.target.parentNode.parentNode);
+      loadSidebar();
     });
 
     div.appendChild(projectContent);
