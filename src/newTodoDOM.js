@@ -23,7 +23,7 @@ todoSubmitBtn.addEventListener("click", () => {
   title = formData.get("title");
   description = formData.get("description");
   dueDate = formData.get("dueDate");
-  priority = formData.get("priority");
+  priority = Number(formData.get("priority"));
   project = formData.get("projectName");
   
   if (
@@ -33,6 +33,13 @@ todoSubmitBtn.addEventListener("click", () => {
     priority != undefined && priority != "" &&
     project != undefined && project != ""
   ) {
+    // if priority is not between 1 and 5, improve it
+    if (priority < 1) {
+      priority = 1;
+    } else if (priority > 5) {
+      priority = 5;
+    }
+    
     // Rearrange todos according to priority
     let todo = new todoGenerator(title, description, dueDate, priority, project);
     addToTodos(todo);

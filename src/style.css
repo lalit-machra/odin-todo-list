@@ -61,7 +61,7 @@ div.buttons {
   border: none;
   background-color: rgba(243, 243, 240, 0);
   color: rgba(0, 0, 0, 0.544);
-  opacity: 0.7;
+  opacity: 0.9;
   margin-top: 10px;
 }
 
@@ -106,7 +106,7 @@ div.buttons {
 .sidebar .viewAllProjsBtn,
 .sidebar .viewProjectBtn {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 20px;
 }
 
@@ -254,16 +254,16 @@ div.todo.checked {
 
 /* Style the dialog box and its elements */
 dialog {
-  width: 400px;
-  background-color: rgba(0, 0, 0, 0.127);
+  width: 500px;
+  background-color: rgba(0, 0, 0, 0.294);
   border: none;
   border-radius: 10px;
-  padding: 30px;
+  padding: 50px;
 }
 
 dialog::backdrop {
   background-color: rgb(243, 243, 240);
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 dialog input,
@@ -276,6 +276,13 @@ dialog textarea {
   border-right: 2px solid white;
   border-bottom: 2px solid;
   background-color: rgba(255, 255, 255, 0.908);
+  height: 35px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+dialog textarea {
+  padding-top: 7px;
 }
 
 dialog input:focus,
@@ -283,4 +290,28 @@ dialog select:focus,
 dialog textarea:focus {
   border: 2px solid;
   outline: none;
+}
+
+dialog .projectName {
+  margin: 0px;
+  height: 35px;
+}
+
+dialog select {
+  padding-bottom: 2px;
+  padding-right: 10px;
+}
+
+dialog .submitBtn,
+dialog .closeBtn {
+  height: 40px;
+  width: 120px;
+  margin-top: 30px;
+  margin-right: 10px;
+}
+
+dialog .closeBtn {
+  background-color: rgba(255, 0, 0, 0.819);
+  border: none;
+  color: white;
 }
