@@ -70,8 +70,10 @@ export function displayProjects() {
     newTodoBtn.innerText = "+ New Todo";
     newTodoBtn.classList.add("newTodoBtn");
     // When user clicks newTodoBtn, open the new todo dialog
-    newTodoBtn.addEventListener("click", () => {
+    newTodoBtn.addEventListener("click", (e) => {
       newTodoDialog.showModal();
+      let selectedIndex = Array.from(e.target.parentNode.parentNode.parentNode.children).indexOf(e.target.parentNode.parentNode);
+      generateDropdown(selectedIndex);
     });
 
     projDeleteBtn = document.createElement("button");
@@ -90,8 +92,6 @@ export function displayProjects() {
       loadSidebar();
       // Update class of project
       updateProjectClass(currIndex);
-      // Generate new dropdown
-      generateDropdown();
     });
 
     div.appendChild(projectContent);

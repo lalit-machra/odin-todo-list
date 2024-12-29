@@ -6,7 +6,6 @@ const projSubmitBtn = document.querySelector(".newProjDialog .submitBtn");
 
 
 projSubmitBtn.addEventListener("click", () => {
-  generateDropdown();
   // After fetching the projects, load their todos as well
   displayTodos();
 });
@@ -39,7 +38,7 @@ todoSubmitBtn.addEventListener("click", () => {
     } else if (priority > 5) {
       priority = 5;
     }
-    
+
     // Rearrange todos according to priority
     let todo = new todoGenerator(title, description, dueDate, priority, project);
     addToTodos(todo);
@@ -49,6 +48,8 @@ todoSubmitBtn.addEventListener("click", () => {
 
     // Display todos
     displayTodos();
+  } else {
+    alert("Something went wrong, please try again");
   }
 });
 
@@ -133,7 +134,7 @@ export function displayTodos() {
 
 
 // In the dialog for adding a new todo, generate checkboxes for every project
-export function generateDropdown() {
+export function generateDropdown(selectedIndex = 0) {
   const projectDropdown = document.querySelector(".projectDropdown");
   projectDropdown.innerHTML = "";
 
@@ -145,8 +146,7 @@ export function generateDropdown() {
 
   defaultOption = document.createElement("option");
   defaultOption.innerText = 'Select a project';
-  defaultOption.setAttribute("disabled", "true");
-  defaultOption.setAttribute("selected", "true");
+  defaultOption.setAttribute("disabled", true);
   defaultOption.setAttribute("value", "");
   select.appendChild(defaultOption);
 
@@ -154,6 +154,9 @@ export function generateDropdown() {
     option = document.createElement("option");
     option.innerText = projects[i];
     option.setAttribute("value", projects[i]);
+    if (i === selectedIndex) {
+      option.setAttribute("selected", true);
+    }
     select.appendChild(option);
   }
 }
