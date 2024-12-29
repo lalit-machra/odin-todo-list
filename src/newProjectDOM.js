@@ -99,13 +99,16 @@ export function displayProjects() {
     projDeleteBtn.innerText = "DELETE PROJECT";
     projDeleteBtn.addEventListener("click", (e) => {
       // Delete associated todos
-      delete todos[projects[i]];
+      let currIndex = Array.from(e.target.parentNode.parentNode.parentNode.children).indexOf(e.target.parentNode.parentNode);
+      console.log(currIndex);
+      delete todos[projects[currIndex]];
       addToStorage(todos);
       // Delete from projects
-      projects.splice(i, 1);
+      projects.splice(currIndex, 1);
       addToStorage(projects);
       // Remove from DOM
       projectSection.removeChild(e.target.parentNode.parentNode);
+      console.log(projects);
       loadSidebar();
       // Generate new dropdown
       generateDropdown();
