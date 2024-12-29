@@ -24,6 +24,7 @@ h1 {
 
 body {
   background-color: rgba(243, 243, 240, 0);
+  margin: 0;
 }
 
 input[type="radio"] {
@@ -73,14 +74,14 @@ div.buttons {
 .content {
   display: grid;
   grid-template-columns: 16vw 84vw;
+  grid-template-rows: minmax(100vh, auto);
   overflow-x: hidden;
 }
 
 /* Style the sidebar */
 .sidebar {
-  background-color: lightcyan;
+  background-color: rgba(32, 178, 171, 0.437);
   padding: 10px;
-  border: 2px solid;
 }
 
 .sidebar .viewAllProjsBtn,
@@ -117,7 +118,7 @@ div.buttons {
 .projects {
   padding: 20px;
   padding-bottom: 0;
-  background-color: rgba(225, 222, 222, 0.442);
+  background-color: rgba(0, 0, 128, 0.234);
 }
 
 /* Collapse Button styling*/
@@ -139,18 +140,18 @@ div.buttons {
 
 /* Style projects at even places */
 .projects .evenStyle {
-  background-color: rgba(135, 206, 250, 0.3);
+  background-color: whitesmoke;
   margin-bottom: 20px;
   padding: 20px;
-  box-shadow: -2px 2px;
+  box-shadow: -3px 3px 2px;
 }
 
 /* Style projects at odd places */
 .projects .oddStyle {
-  background-color: rgba(135, 206, 250, 0.166);
+  background-color: whitesmoke;
   margin-bottom: 20px;
   padding: 20px;
-  box-shadow: -2px 2px;
+  box-shadow: -3px 3px 2px;
 }
 
 /* Design the overall positioning of all the todos */
@@ -267,7 +268,8 @@ dialog::backdrop {
 }
 
 dialog input,
-dialog select {
+dialog select,
+dialog textarea {
   display: block;
   margin-bottom: 20px;
   border-top: 2px solid white;
@@ -278,7 +280,8 @@ dialog select {
 }
 
 dialog input:focus,
-dialog select:focus{
+dialog select:focus,
+dialog textarea:focus {
   border: 2px solid;
   outline: none;
 }
