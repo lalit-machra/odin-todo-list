@@ -108,6 +108,8 @@ export function displayProjects() {
       // Remove from DOM
       projectSection.removeChild(e.target.parentNode.parentNode);
       loadSidebar();
+      // Update class of project
+      updateProjectClass(currIndex);
       // Generate new dropdown
       generateDropdown();
     });
@@ -116,5 +118,15 @@ export function displayProjects() {
     projectContent.appendChild(todosDiv);
     projectContent.appendChild(newTodoBtn);
     projectContent.appendChild(projDeleteBtn);
+  }
+}
+
+function updateProjectClass(index) {
+  const allProjDivs = document.querySelectorAll(".projects > div");
+  for (let i = 0; i < allProjDivs.length; i++) {
+    if (i >= index) {
+      allProjDivs[i].classList.remove(`project${i + 2}`);
+      allProjDivs[i].classList.add(`project${i + 1}`);
+    }
   }
 }
