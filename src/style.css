@@ -96,7 +96,7 @@ div.buttons {
 .sidebar .viewAllProjsBtn,
 .sidebar .viewProjectBtn {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: none;
   background-color: rgba(155, 232, 39, 0);
   color: black;
@@ -163,8 +163,8 @@ div.buttons {
 /* Style the todos */
 .todo {
   display: grid;
-  grid-template-columns: 40px 100px 100px;
-  grid-template-rows: repeat(3, 40px);
+  grid-template-columns: 40px 130px 130px;
+  grid-template-rows: 40px 100px 40px;
   width: 300px;
   height: 200px;
   border: none;
@@ -172,39 +172,54 @@ div.buttons {
   padding: 8px;
 }
 
-.todo h3 {
+/* Position the parts of todo */
+.todo .todoHeader {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+
+.todo .todoSection {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+}
+
+.todo .todoFooter {
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
+}
+
+/* Position the subparts of todo */
+.todoHeader .todoCheckbox {
+  grid-column: 1 / 2;
+}
+
+.todoHeader .title {
+  grid-column: 2 / 4;
   display: inline-block;
+  margin-left: 20px;
+}
+
+.todoSection .deleteTodoBtn {
+  grid-column: 1 / 2;
+  display: inline-block;
+}
+
+.todoSection .description {
+  grid-column: 2 / 4;
+  display: inline-block;
+  margin-left: 20px;
+  width: 200px;
+}
+
+.todoFooter .dueDate {
   grid-column: 2 / 3;
+  display: inline-block;
 }
 
-.todo .category {
+.todoFooter .priority {
   grid-column: 3 / 4;
-}
-
-.todo .dueDate {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-}
-
-.todo .dueTime {
-  grid-column: 3 / 4;
-  grid-row: 2 / 3;
-}
-
-.todo .deleteTodo {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-}
-
-.todo .priority {
-  grid-column: 3 / 4;
-  grid-row: 3 / 4;
-}
-
-/* Style the todo delete button*/
-.todo .deleteTodo {
-  width: 100px;
-  height: 35px;
+  display: inline-block;
+  margin-left: 20px;
 }
 
 /* Style the todo checkbox */

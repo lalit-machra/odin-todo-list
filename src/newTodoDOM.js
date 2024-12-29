@@ -61,7 +61,7 @@ closeBtn.addEventListener("click", () => {
 
 
 export function displayTodos() {
-  let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, deleteTodo;
+  let currProjTodosDiv, div, currTodo, checkbox, h3, p1, p2, p3, deleteTodo, todoHeader, todoSection, todoFooter;
   for (let i = 0; i < projects.length; i++) {
     currProjTodosDiv = document.querySelector(`div.project${i + 1} .allTodos`);
     currProjTodosDiv.innerHTML = "";
@@ -71,12 +71,19 @@ export function displayTodos() {
 
         div = document.createElement("div");
         div.classList.add("todo");
+        currProjTodosDiv.appendChild(div);
+
+        // Todo Header
+        todoHeader = document.createElement("div");
+        todoHeader.classList.add("todoHeader");
+        div.appendChild(todoHeader);
 
         checkbox = document.createElement("input");
         checkbox.setAttribute("type", "checkbox");
+        checkbox.classList.add("todoCheckbox");
         checkbox.addEventListener("change", (e) => {
-          e.target.parentNode.classList.toggle("checked");
-          if (e.target.parentNode.classList.contains("checked")) {
+          e.target.parentNode.parentNode.classList.toggle("checked");
+          if (e.target.parentNode.parentNode.classList.contains("checked")) {
             todos[projects[i]][j]["status"] = "completed";
           }
           else {
@@ -93,18 +100,23 @@ export function displayTodos() {
 
         h3 = document.createElement("h3");
         h3.innerText = currTodo["title"];
+        h3.classList.add("title");
+
+        todoHeader.appendChild(checkbox);
+        todoHeader.appendChild(h3);
+
+        // Todo Section
+        todoSection = document.createElement("div");
+        todoSection.classList.add("todoSection");
+        div.appendChild(todoSection);
 
         p1 = document.createElement("p");
         p1.innerText = currTodo["description"];
         p1.classList.add("description");
 
-        p3 = document.createElement("p");
-        p3.innerText = currTodo["dueDate"];
-        p3.classList.add("dueDate");
-
         deleteTodo = document.createElement("button");
         deleteTodo.innerText = "Delete";
-        deleteTodo.classList.add("deleteTodo");
+        deleteTodo.classList.add("deleteTodoBtn");
         // Delete a todo
         deleteTodo.addEventListener("click", (e) => {
           if (todos[projects[i]].length > 1) {
@@ -118,15 +130,27 @@ export function displayTodos() {
           addToStorage(todos);
         });
 
+        todoSection.appendChild(deleteTodo);
+        todoSection.appendChild(p1);
+
+        // Todo Footer
+        todoFooter = document.createElement("div");
+        todoFooter.classList.add("todoFooter");
+        div.appendChild(todoFooter);
+
+        p2 = document.createElement("p");
+        p2.innerText = currTodo["dueDate"];
+        p2.classList.add("dueDate");
+
+        p3 = document.createElement("p");
+        p3.innerText = `Priority: ${currTodo["priority"]}`;
+        p3.classList.add("priority");
+
+        todoFooter.appendChild(p2);
+        todoFooter.appendChild(p3);
+
         /* Add required class according to priority for styling */
-        assignPriorityClass(div, currTodo["priority"]);
-  
-        div.appendChild(checkbox);
-        div.appendChild(h3);
-        div.appendChild(p1);
-        div.appendChild(p3);
-        div.appendChild(deleteTodo);
-        currProjTodosDiv.appendChild(div);
+        assignPriorityClass(div, currTodo["priority"]);        
       }
     }
   }
