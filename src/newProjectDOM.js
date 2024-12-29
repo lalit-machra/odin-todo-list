@@ -100,7 +100,6 @@ export function displayProjects() {
     projDeleteBtn.addEventListener("click", (e) => {
       // Delete associated todos
       let currIndex = Array.from(e.target.parentNode.parentNode.parentNode.children).indexOf(e.target.parentNode.parentNode);
-      console.log(currIndex);
       delete todos[projects[currIndex]];
       addToStorage(todos);
       // Delete from projects
@@ -108,7 +107,6 @@ export function displayProjects() {
       addToStorage(projects);
       // Remove from DOM
       projectSection.removeChild(e.target.parentNode.parentNode);
-      console.log(projects);
       loadSidebar();
       // Generate new dropdown
       generateDropdown();

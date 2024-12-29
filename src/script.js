@@ -18,13 +18,13 @@ function addToProjects(project) {
 }
 
 class todoGenerator {
-  constructor(description, category, dueTime, dueDate, priority, project) {
+  constructor(title, description, dueDate, priority, project) {
+    this.title = title;
     this.description = description;
-    this.category = category;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.status = 'not-completed';
     this.project = project;
+    this.status = 'not-completed';
   }
 }
 

@@ -17,23 +17,24 @@ const todoSubmitBtn = document.querySelector(".newTodoDialog .submitBtn");
 const todoForm = document.querySelector(".newTodoDialog .todoForm");
 
 
-let description, category, dueDate, priority, project;
+let title, description, dueDate, priority, project;
 todoSubmitBtn.addEventListener("click", () => {
   const formData = new FormData(todoForm);
+  title = formData.get("title");
   description = formData.get("description");
-  category = formData.get("category");
   dueDate = formData.get("dueDate");
   priority = formData.get("priority");
   project = formData.get("projectName");
   
-  if (description != undefined && description != "" &&
-      category != undefined && category != "" &&
-      dueDate != undefined && dueDate != "" &&
-      priority != undefined && priority != "" &&
-      project != undefined && project != ""
+  if (
+    title != undefined && title != "" &&
+    description != undefined && description != "" &&
+    dueDate != undefined && dueDate != "" &&
+    priority != undefined && priority != "" &&
+    project != undefined && project != ""
   ) {
     // Rearrange todos according to priority
-    let todo = new todoGenerator(description, category, dueDate, priority, project);
+    let todo = new todoGenerator(title, description, dueDate, priority, project);
     addToTodos(todo);
     rearrangeTodos(project);
     // Add to localStorage
@@ -83,11 +84,11 @@ export function displayTodos() {
         }
 
         h3 = document.createElement("h3");
-        h3.innerText = currTodo["description"];
+        h3.innerText = currTodo["title"];
 
         p1 = document.createElement("p");
-        p1.innerText = currTodo["category"];
-        p1.classList.add("category");
+        p1.innerText = currTodo["description"];
+        p1.classList.add("description");
 
         p3 = document.createElement("p");
         p3.innerText = currTodo["dueDate"];
@@ -132,20 +133,19 @@ export function generateDropdown() {
   let select, defaultOption, option;
 
   select = document.createElement("select");
+  select.setAttribute("name", "projectName");
   projectDropdown.appendChild(select);
 
   defaultOption = document.createElement("option");
   defaultOption.innerText = 'Select a project';
   defaultOption.setAttribute("disabled", "true");
   defaultOption.setAttribute("selected", "true");
-  defaultOption.setAttribute("name", "projectName");
   defaultOption.setAttribute("value", "");
   select.appendChild(defaultOption);
 
   for (let i = 0; i < projects.length; i++) {
     option = document.createElement("option");
     option.innerText = projects[i];
-    option.setAttribute("name", "projectName");
     option.setAttribute("value", projects[i]);
     select.appendChild(option);
   }
