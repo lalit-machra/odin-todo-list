@@ -12,12 +12,6 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  text-align: center;
-  /*color: blue;*/
-  color: black;
-}
-
 .projectDropdown input {
   display: inline-block;
 }
@@ -50,6 +44,7 @@ div.buttons {
   color: black;
   border: 1px solid;
   box-shadow: 3px 3px 4px black;
+  margin-left: 20px;
 }
 
 .newProjBtn:hover {
@@ -80,8 +75,22 @@ div.buttons {
 
 /* Style the sidebar */
 .sidebar {
-  background-color: rgba(32, 178, 171, 0.437);
-  padding: 10px;
+  background-color: rgba(155, 232, 39, 0.872);
+}
+
+.sidebar .titleSection {
+  background-image: url(../images/logo2.png);
+  background-size: 272px;
+  height: 125px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.sidebar h1 {
+  margin-top: 30px;
+  margin-bottom: 25px;
+  margin-left: 20px;
+  font-size: 28px;
 }
 
 .sidebar .viewAllProjsBtn,
@@ -89,24 +98,22 @@ div.buttons {
   display: block;
   margin-bottom: 10px;
   border: none;
-  background-color: lightcyan;
-  color: blue;
-  border-bottom: 2px solid lightcyan;
+  background-color: rgba(155, 232, 39, 0);
+  color: black;
+  border-bottom: 2px solid black;
 }
 
-.sidebar .viewAllProjsBtn {
-  font-weight: bold;
-  font-size: 18px;
-}
-
+.sidebar .viewAllProjsBtn,
 .sidebar .viewProjectBtn {
-  font-size: 16px;
-  margin-left: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 20px;
 }
 
 .sidebar .viewAllProjsBtn:hover,
 .sidebar .viewProjectBtn:hover {
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid black;
+  border-radius: 12px;
 }
 
 .sidebar .viewAllProjsBtn:active,
@@ -138,16 +145,8 @@ div.buttons {
   display: none;
 }
 
-/* Style projects at even places */
-.projects .evenStyle {
-  background-color: whitesmoke;
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: -3px 3px 2px;
-}
-
-/* Style projects at odd places */
-.projects .oddStyle {
+/* Style projects */
+.projects .projectDiv {
   background-color: whitesmoke;
   margin-bottom: 20px;
   padding: 20px;
