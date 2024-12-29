@@ -3,7 +3,7 @@ import {
   displayProjects,
   assignToProjects,
   todos,
-  generateCheckboxes,
+  generateDropdown,
   displayTodos,
   assignToTodos,
   loadSidebar,
@@ -18,7 +18,7 @@ window.addEventListener("load", () => {
     assignToProjects(JSON.parse(storage["projects"]));
     displayProjects();
     loadSidebar();
-    generateCheckboxes();
+    generateDropdown();
     if (storage["todos"]) {
       assignToTodos(JSON.parse(storage["todos"]));
       displayTodos();

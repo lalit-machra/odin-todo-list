@@ -21,7 +21,6 @@ class todoGenerator {
   constructor(description, category, dueTime, dueDate, priority, project) {
     this.description = description;
     this.category = category;
-    this.dueTime = dueTime;
     this.dueDate = dueDate;
     this.priority = priority;
     this.status = 'not-completed';

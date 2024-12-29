@@ -6,7 +6,7 @@ const projSubmitBtn = document.querySelector(".newProjDialog .submitBtn");
 
 
 projSubmitBtn.addEventListener("click", () => {
-  generateCheckboxes();
+  generateDropdown();
   // After fetching the projects, load their todos as well
   displayTodos();
 });
@@ -17,29 +17,25 @@ const todoSubmitBtn = document.querySelector(".newTodoDialog .submitBtn");
 const todoForm = document.querySelector(".newTodoDialog .todoForm");
 
 
-let description, category, dueTime, dueDate, priority, project;
+let description, category, dueDate, priority, project;
 todoSubmitBtn.addEventListener("click", () => {
   const formData = new FormData(todoForm);
   description = formData.get("description");
   category = formData.get("category");
-  dueTime = formData.get("dueTime");
   dueDate = formData.get("dueDate");
   priority = formData.get("priority");
-  project = formData.getAll("projectName");
+  project = formData.get("projectName");
   
   if (description != undefined && description != "" &&
       category != undefined && category != "" &&
-      dueTime != undefined && category != "" &&
       dueDate != undefined && dueDate != "" &&
       priority != undefined && priority != "" &&
       project != undefined && project != ""
   ) {
     // Rearrange todos according to priority
-    for (let i = 0; i < project.length; i++) {
-      let todo = new todoGenerator(description, category, dueTime, dueDate, priority, project[i]);
-      addToTodos(todo);
-      rearrangeTodos(project[i]);
-    }
+    let todo = new todoGenerator(description, category, dueDate, priority, project);
+    addToTodos(todo);
+    rearrangeTodos(project);
     // Add to localStorage
     addToStorage(todos);
 
@@ -93,10 +89,6 @@ export function displayTodos() {
         p1.innerText = currTodo["category"];
         p1.classList.add("category");
 
-        p2 = document.createElement("p");
-        p2.innerText = currTodo["dueTime"];
-        p2.classList.add("dueTime");
-
         p3 = document.createElement("p");
         p3.innerText = currTodo["dueDate"];
         p3.classList.add("dueDate");
@@ -123,7 +115,6 @@ export function displayTodos() {
         div.appendChild(checkbox);
         div.appendChild(h3);
         div.appendChild(p1);
-        div.appendChild(p2);
         div.appendChild(p3);
         div.appendChild(deleteTodo);
         currProjTodosDiv.appendChild(div);
@@ -134,22 +125,28 @@ export function displayTodos() {
 
 
 // In the dialog for adding a new todo, generate checkboxes for every project
-export function generateCheckboxes() {
-  const projectCheckbox = document.querySelector(".projectCheckbox");
-  projectCheckbox.innerHTML = "";
-  let input, label, checkboxDiv;
+export function generateDropdown() {
+  const projectDropdown = document.querySelector(".projectDropdown");
+  projectDropdown.innerHTML = "";
+
+  let select, defaultOption, option;
+
+  select = document.createElement("select");
+  projectDropdown.appendChild(select);
+
+  defaultOption = document.createElement("option");
+  defaultOption.innerText = 'Select a project';
+  defaultOption.setAttribute("disabled", "true");
+  defaultOption.setAttribute("selected", "true");
+  defaultOption.setAttribute("name", "projectName");
+  defaultOption.setAttribute("value", "");
+  select.appendChild(defaultOption);
+
   for (let i = 0; i < projects.length; i++) {
-    checkboxDiv = document.createElement("div");
-    input = document.createElement("input");
-    input.setAttribute("type", "checkbox");
-    input.setAttribute("id", `project${i}`);
-    input.setAttribute("name", "projectName");
-    input.setAttribute("value", projects[i]);
-    label = document.createElement("label");
-    label.innerText = projects[i];
-    label.setAttribute("for", `project${i}`);
-    checkboxDiv.appendChild(input);
-    checkboxDiv.appendChild(label);
-    projectCheckbox.appendChild(checkboxDiv);
+    option = document.createElement("option");
+    option.innerText = projects[i];
+    option.setAttribute("name", "projectName");
+    option.setAttribute("value", projects[i]);
+    select.appendChild(option);
   }
 }

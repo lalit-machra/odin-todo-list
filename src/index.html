@@ -8,9 +8,10 @@
   </head>
   <body>
     <div class="content">
-      <h1>Todo List</h1>
-
       <section class="sidebar">
+        <div class="titleSection">
+          <h1>Todo List</h1>
+        </div>
         <button class="newProjBtn">Add new project</button>
         <h2>Your Projects</h2>
         <div class="allProjects"></div>
@@ -35,10 +36,9 @@
       <form class="todoForm">
         <input id="description" type="text" name="description" placeholder="description" autocomplete="off" required>
         <input id="category" type="text" name="category" placeholder="category" autocomplete="off" required>
-        <input id="dueTime" type="time" name="dueTime" required>
         <input id="dueDate" type="date" name="dueDate" required>
         <input id="priority" type="number" name="priority" placeholder="priority" autocomplete="off" required>
-        <div class="projectCheckbox">
+        <div class="projectDropdown">
           
         </div>
         <div class="buttons">
