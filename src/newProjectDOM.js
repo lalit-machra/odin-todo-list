@@ -39,6 +39,27 @@ export function displayProjects() {
   for (let i = 0; i < projects.length; i++) {
     div = document.createElement("div");
     div.classList.add(`project${i + 1}`);
+    // Add classes for styling
+    if (i % 2 !== 0) {
+      // Add oddStyle class if it doesn't exist
+      if (!div.classList.contains("oddStyle")) {
+        div.classList.add("oddStyle");
+      }
+      // Remove evenStyle class if it exists
+      if (div.classList.contains("evenStyle")) {
+        div.classList.remove("evenStyle");
+      }
+    }
+    else {
+      // Add evenStyle class if it doesn't exist
+      if (!div.classList.contains("evenStyle")) {
+        div.classList.add("evenStyle");
+      }
+      // Remove oddStyle class if it exists
+      if (div.classList.contains("oddStyle")) {
+        div.classList.remove("oddStyle");
+      }
+    }
     projectSection.appendChild(div);
 
     projectHead = document.createElement("div");

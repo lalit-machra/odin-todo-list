@@ -24,7 +24,7 @@ function showProject(viewProjectBtn, projectIndex) {
         }
       } else {
         // Hide all other projects
-        if(!projDiv.hasAttribute("hidden")) {
+        if (!projDiv.hasAttribute("hidden")) {
           projDiv.setAttribute("hidden", true);
         }
       }
@@ -35,10 +35,10 @@ function showProject(viewProjectBtn, projectIndex) {
 export default function loadSidebar() {
   const allProjectsDiv = document.querySelector(".sidebar .allProjects");
   allProjectsDiv.innerHTML = "";
-  let allProjectsBtn, projectBtn;
+  let projectBtn;
 
   // Add a "All Projects" button
-  allProjectsBtn = document.createElement("button");
+  const allProjectsBtn = document.createElement("button");
   allProjectsBtn.innerText = "All Projects";
   allProjectsBtn.classList.add("viewAllProjsBtn");
   allProjectsDiv.appendChild(allProjectsBtn);

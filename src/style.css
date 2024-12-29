@@ -115,38 +115,50 @@ div.buttons {
   opacity: 0.3;
 }
 
+/* Style the projects section*/
 .projects {
-  padding: 10px;
-  border: 2px solid;
+  padding: 20px;
+  padding-bottom: 0;
+  background-color: rgba(225, 222, 222, 0.442);
 }
 
-/* Style the dialog box */
-dialog {
-  width: 400px;
-  background-color: rgba(0, 0, 0, 0.127);
-  border: none;
-  border-radius: 10px;
-  padding: 30px;
+/* Collapse Button styling*/
+.projects .projectHead h2 {
+  display: inline-block;
+  margin-top: 0;
 }
 
-dialog::backdrop {
-  background-color: rgb(243, 243, 240);
-  opacity: 0.5;
+.projectHead .collapseBtn {
+  margin-left: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgb(244, 242, 242);
 }
 
-dialog input {
-  display: block;
+.projectContent.collapsed {
+  display: none;
+}
+
+/* Style projects at odd places */
+.projects .evenStyle {
+  background-color: rgba(135, 206, 250, 0.3);
   margin-bottom: 20px;
-  border-top: 2px solid white;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
-  border-bottom: 2px solid;
-  background-color: rgba(255, 255, 255, 0.908);
+  padding: 20px;
+  box-shadow: -2px 2px;
 }
 
-input:focus {
-  border: 2px solid;
-  outline: none;
+.projects .oddStyle {
+  background-color: rgba(135, 206, 250, 0.166);
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: -2px 2px;
+}
+
+/* Design the overall positioning of all the todos */
+.projects .allTodos {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 /* Style the todos */
@@ -229,29 +241,6 @@ div.todo.checked {
   background-color: lightgreen;
 }
 
-/* Design the overall positioning of all the todos */
-.projects .allTodos {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-/* Collapse Button styling*/
-.projects .projectHead h2 {
-  display: inline-block;
-}
-
-.projectHead .collapseBtn {
-  margin-left: 20px;
-  border: 1px solid black;
-  border-radius: 50%;
-  background-color: rgb(244, 242, 242);
-}
-
-.projectContent.collapsed {
-  display: none;
-}
-
 /* Style the delete project button */
 .projectContent .deleteProjBtn {
   display: block;
@@ -262,4 +251,33 @@ div.todo.checked {
   border-radius: 8px;
   background-color: red;
   color: white;
+}
+
+/* Style the dialog box */
+dialog {
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.127);
+  border: none;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+dialog::backdrop {
+  background-color: rgb(243, 243, 240);
+  opacity: 0.5;
+}
+
+dialog input {
+  display: block;
+  margin-bottom: 20px;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  border-bottom: 2px solid;
+  background-color: rgba(255, 255, 255, 0.908);
+}
+
+input:focus {
+  border: 2px solid;
+  outline: none;
 }
