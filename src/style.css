@@ -157,69 +157,82 @@ div.buttons {
 .projects .allTodos {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
+  width: 1300px;
+  flex-wrap: wrap;
 }
 
 /* Style the todos */
 .todo {
   display: grid;
-  grid-template-columns: 40px 130px 130px;
-  grid-template-rows: 40px 100px 40px;
+  grid-template-columns: 40px 120px 120px;
+  grid-template-rows: 40px 70px 30px 30px;
   width: 300px;
   height: 200px;
   border: none;
   border-radius: 8px;
-  padding: 8px;
+  padding: 12px;
 }
 
 /* Position the parts of todo */
 .todo .todoHeader {
   grid-column: 1 / 4;
   grid-row: 1 / 2;
+  display: flex;
+  align-items: flex-start;
 }
 
 .todo .todoSection {
   grid-column: 1 / 4;
   grid-row: 2 / 3;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 10px;
 }
 
 .todo .todoFooter {
-  grid-column: 2 / 4;
+  grid-column: 1 / 4;
   grid-row: 3 / 4;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.todo .todoButtons {
+  grid-column: 1 / 4;
+  grid-row: 4 / 5;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 
 /* Position the subparts of todo */
-.todoHeader .todoCheckbox {
-  grid-column: 1 / 2;
-}
-
 .todoHeader .title {
-  grid-column: 2 / 4;
   display: inline-block;
+  margin: 0;
   margin-left: 20px;
-}
-
-.todoSection .deleteTodoBtn {
-  grid-column: 1 / 2;
-  display: inline-block;
+  margin-top: 4px;
 }
 
 .todoSection .description {
-  grid-column: 2 / 4;
-  display: inline-block;
-  margin-left: 20px;
-  width: 200px;
+  width: 280px;
+  margin: 0;
 }
 
 .todoFooter .dueDate {
-  grid-column: 2 / 3;
   display: inline-block;
 }
 
 .todoFooter .priority {
-  grid-column: 3 / 4;
   display: inline-block;
   margin-left: 20px;
+}
+
+.todoFooter .deleteTodoBtn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  
 }
 
 /* Style the todo checkbox */
